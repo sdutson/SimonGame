@@ -20,6 +20,8 @@ public:
 
     void roundEnd(); 
 
+    void gameEnd();
+
 };
 
 // Addmove to gameLogic when prompted by view. 

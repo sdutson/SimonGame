@@ -11,6 +11,8 @@ class Controller
 
     bool isValidMove(int buttonValue);
 
+    const int COMPUTER_TURN_LENGTH = 2000; // TODO: adjust this as needed.
+
 public:
     Controller(QObject *parent);
 

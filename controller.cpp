@@ -1,6 +1,6 @@
 #include "controller.h"
 #include "gamelogic.h"
-
+#include <QTimer>
 
 bool Controller::isValidMove(int buttonValue)
 {
@@ -37,7 +37,12 @@ void Controller::playerClickedButton(int buttonValue)
 void Controller::roundEnd()
 {
     model.addMove();
-    //TODO: Make timers. 
+    int moveTime = 0; // TODO: Adjust this?
+    for(int move: moves)
+    {
+        moveTime += COMPUTER_TURN_LENGTH / moves.size();
+        QTimer::singleShot() // Put llambda here.
+    }
 }
 
 void Controller::gameEnd()

@@ -7,12 +7,14 @@ bool Controller::isValidMove(int buttonValue)
     return *moveIterator == buttonValue;
 }
 
-Controller::Controller() {}
-
-void Controller::gameStart()
+GameLogic::GameLogic(QObject *parent) : QObject(parent)
 {
     GameLogic model;
     std::vector<int>::iterator moveIterator = model.getMoves().begin();
+}
+
+void Controller::gameStart()
+{
     roundEnd();
 }
 

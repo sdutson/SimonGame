@@ -12,7 +12,9 @@ class Controller
     bool isValidMove(int buttonValue);
 
 public:
-    Controller();
+    Controller(QObject *parent);
+
+    Controller(); //TODO: Do we need the default constructor?
 
     void gameStart(); // Initalizes logic
 

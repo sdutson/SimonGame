@@ -6,16 +6,14 @@ bool Controller::isValidMove(int buttonValue)
     return *moveIterator == buttonValue;
 }
 
-Controller::Controller()
-{
-}
+Controller::Controller() {}
 
 void Controller::gameStart()
 {
     GameLogic model;
     std::vector<int>::iterator moveIterator = model.getMoves().begin();
     model.addMove(); // TODO: add in model? 
-    // Either call playerTurnEnd or direct call to light up button. 
+    // TODO:Either call playerTurnEnd or direct call to light up button. 
 }
 
 void Controller::playerClickedButton(int buttonValue)
@@ -36,9 +34,10 @@ void Controller::playerClickedButton(int buttonValue)
 
 void Controller::roundEnd()
 {
-    
+    //TODO: Make timers. 
 }
 
 void Controller::gameEnd()
 {
+    
 }

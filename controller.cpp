@@ -1,6 +1,7 @@
 #include "controller.h"
 #include "gamelogic.h"
 
+
 bool Controller::isValidMove(int buttonValue)
 {
     return *moveIterator == buttonValue;
@@ -12,8 +13,7 @@ void Controller::gameStart()
 {
     GameLogic model;
     std::vector<int>::iterator moveIterator = model.getMoves().begin();
-    model.addMove(); // TODO: add in model? 
-    // TODO:Either call playerTurnEnd or direct call to light up button. 
+    roundEnd();
 }
 
 void Controller::playerClickedButton(int buttonValue)
@@ -34,6 +34,7 @@ void Controller::playerClickedButton(int buttonValue)
 
 void Controller::roundEnd()
 {
+    model.addMove();
     //TODO: Make timers. 
 }
 

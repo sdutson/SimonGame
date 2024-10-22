@@ -15,6 +15,8 @@ public:
 
     void addMove();
 
+    vector<int>& getMoves();
+
 };
 
 #endif // GAMELOGIC_H

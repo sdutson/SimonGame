@@ -1,15 +1,26 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
+#include "gamelogic.h"
+
 class Controller
 {
+    GameLogic model;
+
+    std::vector<int>::iterator moveIterator;
+
+    bool isValidMove(int buttonValue);
+
 public:
     Controller();
-};
 
-// GameStart()
-    // initializ logic.
-    // roundEnd().
+    void gameStart(); // Initalizes logic
+
+    void playerClickedButton(int buttonValue);
+
+    void roundEnd(); 
+
+};
 
 // Addmove to gameLogic when prompted by view. 
 // Slot for when player clickes button. 

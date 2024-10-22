@@ -15,3 +15,8 @@ void GameLogic::addMove()
     int newMove = rand() % numButtons;
     moves.push_back(newMove);
 }
+
+vector<int> &GameLogic::getMoves()
+{
+    return moves;
+}

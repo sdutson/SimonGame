@@ -3,3 +3,9 @@
 
 # Ignore .json files
 *.json
+
+# Ignore build folder
+*build
+
+# Ignore .user files
+*.user

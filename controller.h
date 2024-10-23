@@ -4,13 +4,16 @@
 #include "gamelogic.h"
 #include <QObject>
 
-    class Controller : public QObject
-    {
-//     GameLogic model;
+class Controller : public QObject
+{
+    Q_OBJECT
 
-//     std::vector<int>::iterator moveIterator;
+private:
+    GameLogic model;
 
-//     bool isValidMove(int buttonValue);
+    std::vector<int>::iterator moveIterator;
+
+    bool isValidMove(int buttonValue);
 
 //     int getWaitTime(int currentWaitTime);
 
@@ -18,25 +21,24 @@
 
 //     void roundEnd();
 
-//     void playerClickedButton(int buttonValue);
+    void playerClickedButton(int buttonValue);
 
 //     const int COMPUTER_TURN_LENGTH = 2000; // TODO: adjust this as needed.
 
-// public:
-//     explicit Controller(QObject *parent = nullptr);
+public:
+     explicit Controller(QObject *parent = nullptr);
 
-//     void gameStart();
+public slots:
+    void gameStart();
 
-// public slots:
+    void redButtonPressed();
 
-//     void redButtonPressed();
+    void blueButtonPressed();
 
-//     void blueButtonPressed();
-
-// signals:
+signals:
 //     void updateProgressBar(int);
 
-//     void gameEnd();
-    };
+    void gameEnd();
+};
 
 #endif // CONTROLLER_H

@@ -10,11 +10,14 @@ MainWindow::MainWindow(Controller& controller, QWidget *parent)
     ui->setupUi(this);
 
     connect(ui->startButton, &QPushButton::clicked, this, &MainWindow::startButtonClicked);
-    // connect(ui->redButton, &QPushButton::clicked, controller, &Controller::redButtonPressed);
-    // connect(ui->blueButton, &QPushButton::clicked, controller, &Controller::blueButtonPressed);
+    connect(ui->startButton, &QPushButton::clicked, &controller, &Controller::gameStart);
+    // connect(&controller, &Controller::gameEnd, this, &MainWindow::gameOver);
+    // connect(ui->redButton, &QPushButton::clicked, &controller, &Controller::redButtonPressed);
+    // connect(ui->blueButton, &QPushButton::clicked, &controller, &Controller::blueButtonPressed);
 
     setRedButtonColor();
     setBlueButtonColor();
+    ui->loseMessage->setVisible(false); // TODO: Is there a way to make this the default?
 }
 
 void MainWindow::setRedButtonColor()
@@ -37,7 +40,6 @@ void MainWindow::startButtonClicked()
     ui->startButton->setEnabled(false);
     ui->redButton->setEnabled(true);
     ui->blueButton->setEnabled(true);
-    // controller.gameStart();
 }
 
 void MainWindow::blueButtonFlash() // TODO: Connect this.
@@ -50,4 +52,9 @@ void MainWindow::redButtonFlash() // TODO: Connect this.
 {
     ui->redButton->setStyleSheet( QString("QPushButton {background-color: rgb(255,150,150);}"));
     QTimer::singleShot(500, this, &MainWindow::setRedButtonColor);
+}
+
+void MainWindow::gameOver()
+{
+    ui->loseMessage->setVisible(true);
 }

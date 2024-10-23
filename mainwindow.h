@@ -26,6 +26,8 @@ private slots:
 
     void blueButtonFlash();
 
+    void gameOver();
+
 private:
     Ui::MainWindow *ui;
 

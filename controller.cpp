@@ -2,10 +2,10 @@
 #include "gamelogic.h"
 #include <QTimer>
 
-// bool Controller::isValidMove(int buttonValue)
-// {
-//     return *moveIterator == buttonValue;
-// }
+bool Controller::isValidMove(int buttonValue)
+{
+    return *moveIterator == buttonValue;
+}
 
 // int Controller::getWaitTime(int currentWaitTime)
 // {
@@ -18,40 +18,40 @@
 //     return (index / moveIterator.size()) * 100;
 // }
 
-// GameLogic::GameLogic(QObject *parent) : QObject(parent) {}
+Controller::Controller(QObject *parent) : QObject(parent) {}
 
-// void Controller::gameStart()
-// {
-//     GameLogic model;
-//     std::vector<int>::iterator moveIterator = model.getMoves().begin();
-//     roundEnd();
-// }
+void Controller::gameStart()
+{
+    GameLogic model;
+    std::vector<int>::iterator moveIterator = model.getMoves().begin();
+    // roundEnd();
+}
 
-// void Controller::redButtonPressed()
-// {
-//     playerClickedButton(0);
-// }
+void Controller::redButtonPressed()
+{
+    playerClickedButton(0);
+}
 
-// void Controller::blueButtonPressed()
-// {
-//     playerClickedButton(1);
-// }
+void Controller::blueButtonPressed()
+{
+    playerClickedButton(1);
+}
 
-// void Controller::playerClickedButton(int buttonValue)
-// {
-//     if(!isValidMove(buttonValue))
-//     {
-//        emit gameEnd(); // End the game. TODO: Connect to view.
-//     }
-//     // Update the progress bar.
-//     emit updateProgressBar(incrementProgressBar()); // TODO: Connect to view.
+void Controller::playerClickedButton(int buttonValue)
+{
+    // if(!isValidMove(buttonValue))
+    // {
+    //    emit gameEnd(); // End the game.
+    // }
+    // Update the progress bar.
+    // emit updateProgressBar(incrementProgressBar()); // TODO: Connect to view.
 
-//     if(moveIterator == model.getMoves().end())
-//     {
-//         roundEnd();
-//     }
-//     moveIterator++;
-// }
+    // if(moveIterator == model.getMoves().end())
+    // {
+    //     roundEnd();
+    // }
+    // moveIterator++;
+}
 
 // void Controller::roundEnd()
 // {

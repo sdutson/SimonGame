@@ -10,16 +10,21 @@ MainWindow::MainWindow(Controller& controller, QWidget *parent)
     ui->setupUi(this);
 
     connect(ui->startButton, &QPushButton::clicked, this, &MainWindow::startButtonClicked);
+    connect(ui->redButton, &QPushButton::clicked, this, &MainWindow::redButtonClicked);
+    connect(ui->blueButton, &QPushButton::clicked, this, &MainWindow::blueButtonClicked);
 
     setRedButtonColor();
-    ui->blueButton->setStyleSheet( QString("QPushButton {background-color: rgb(50,50,139);} QPushButton:pressed {background-color: rgb(0 ,0 ,255);}"));
-
-    // Disable red and blue buttons and slider?
+    setBlueButtonColor();
 }
 
 void MainWindow::setRedButtonColor()
 {
     ui->redButton->setStyleSheet( QString("QPushButton {background-color: rgb(200,50,50);} QPushButton:pressed {background-color: rgb(255,150,150);}"));
+}
+
+void MainWindow::setBlueButtonColor()
+{
+    ui->blueButton->setStyleSheet( QString("QPushButton {background-color: rgb(50,50,139);} QPushButton:pressed {background-color: rgb(0 ,0 ,255);}"));
 }
 
 MainWindow::~MainWindow()
@@ -35,8 +40,24 @@ void MainWindow::startButtonClicked()
     // controller.gameStart();
 }
 
+void MainWindow::redButtonClicked()
+{
+    //controller->redButtonPressed();
+}
+
+void MainWindow::blueButtonClicked()
+{
+    //controller->blueButtonPressed();
+}
+
+void MainWindow::blueButtonFlash() // TODO: Connect this.
+{
+    ui->blueButton->setStyleSheet( QString("QPushButton {background-color: rgb(255, 0, 0);}"));
+    QTimer::singleShot(500, this, &MainWindow::setBlueButtonColor);
+}
+
 void MainWindow::redButtonFlash() // TODO: Connect this.
 {
-        ui->redButton->setStyleSheet( QString("QPushButton {background-color: rgb(255,150,150);})"));
-        QTimer::singleShot(500, this &MainWindow::setRedButtonColor);
+    ui->redButton->setStyleSheet( QString("QPushButton {background-color: rgb(255,150,150);}"));
+    QTimer::singleShot(500, this, &MainWindow::setRedButtonColor);
 }

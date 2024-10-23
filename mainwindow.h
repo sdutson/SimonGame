@@ -22,12 +22,20 @@ public:
 private slots:
     void startButtonClicked();
 
+    void redButtonClicked();
+
+    void blueButtonClicked();
+
     void redButtonFlash();
+
+    void blueButtonFlash();
 
 private:
     Ui::MainWindow *ui;
 
     void setRedButtonColor();
+
+    void setBlueButtonColor();
 };
 #endif // MAINWINDOW_H
 

@@ -22,10 +22,6 @@ public:
 private slots:
     void startButtonClicked();
 
-    void redButtonClicked();
-
-    void blueButtonClicked();
-
     void redButtonFlash();
 
     void blueButtonFlash();

@@ -10,8 +10,8 @@ MainWindow::MainWindow(Controller& controller, QWidget *parent)
     ui->setupUi(this);
 
     connect(ui->startButton, &QPushButton::clicked, this, &MainWindow::startButtonClicked);
-    connect(ui->redButton, &QPushButton::clicked, this, &MainWindow::redButtonClicked);
-    connect(ui->blueButton, &QPushButton::clicked, this, &MainWindow::blueButtonClicked);
+    // connect(ui->redButton, &QPushButton::clicked, controller, &Controller::redButtonPressed);
+    // connect(ui->blueButton, &QPushButton::clicked, controller, &Controller::blueButtonPressed);
 
     setRedButtonColor();
     setBlueButtonColor();
@@ -38,16 +38,6 @@ void MainWindow::startButtonClicked()
     ui->redButton->setEnabled(true);
     ui->blueButton->setEnabled(true);
     // controller.gameStart();
-}
-
-void MainWindow::redButtonClicked()
-{
-    //controller->redButtonPressed();
-}
-
-void MainWindow::blueButtonClicked()
-{
-    //controller->blueButtonPressed();
 }
 
 void MainWindow::blueButtonFlash() // TODO: Connect this.

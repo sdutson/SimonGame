@@ -19,18 +19,22 @@ class Controller : public QObject
 
     int incrementProgressBar();
 
-    const int COMPUTER_TURN_LENGTH = 2000; // TODO: adjust this as needed.
-
-public:
-    explicit Controller(QObject *parent = nullptr);
-
     void roundEnd();
 
     void playerClickedButton(int buttonValue);
 
+    const int COMPUTER_TURN_LENGTH = 2000; // TODO: adjust this as needed.
+
+
+public:
+    explicit Controller(QObject *parent = nullptr);
 
 public slots:
     void gameStart();
+
+    void redButtonPressed();
+
+    void blueButtonPressed();
 
 signals:
     updateProgressBar(int);

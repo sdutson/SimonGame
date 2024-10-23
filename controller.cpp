@@ -27,6 +27,16 @@ void Controller::gameStart()
     roundEnd();
 }
 
+void Controller::redButtonPressed()
+{
+    playerClickedButton(0);
+}
+
+void Controller::blueButtonPressed()
+{
+    playerClickedButton(1);
+}
+
 void Controller::playerClickedButton(int buttonValue)
 {
     if(!isValidMove(buttonValue))

@@ -2,4 +2,4 @@
 /build/
 
 # Ignore .user file
-*.user
+*.pro.user

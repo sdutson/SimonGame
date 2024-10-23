@@ -31,7 +31,7 @@ void Controller::playerClickedButton(int buttonValue)
 {
     if(!isValidMove(buttonValue))
     {
-       gameEnd();
+       emit gameEnd(); // End the game.
     }
     // Update the progress bar.
     emit updateProgressBar(incrementProgressBar()); // TODO: Connect to view.
@@ -45,6 +45,7 @@ void Controller::playerClickedButton(int buttonValue)
 
 void Controller::roundEnd()
 {
+    emit updateProgressBar(0); // Clear the profress bar.
     model.addMove();
     int waitTime = 500;
     for(int move: moves)
@@ -55,7 +56,3 @@ void Controller::roundEnd()
     moveIterator = model.getMoves().begin(); // Reset the iterator.
 }
 
-void Controller::gameEnd()
-{
-    // TODO: Inform the view of gameEnd.
-}

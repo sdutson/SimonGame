@@ -24,16 +24,17 @@ class Controller : public QObject
 public:
     explicit Controller(QObject *parent = nullptr);
 
+    void roundEnd(); // TODO: Should this be made private?
+
+public slots:
     void gameStart();
 
     void playerClickedButton(int buttonValue);
 
-    void roundEnd(); 
-
-    void gameEnd();
-
 signals:
     updateProgressBar(int);
+
+    gameEnd();
 };
 
 #endif // CONTROLLER_H

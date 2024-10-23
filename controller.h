@@ -13,6 +13,8 @@ class Controller
 
     int getWaitTime(int currentWaitTime);
 
+    int incrementProgressBar();
+
     const int COMPUTER_TURN_LENGTH = 2000; // TODO: adjust this as needed.
 
 public:
@@ -28,20 +30,8 @@ public:
 
     void gameEnd();
 
+signals:
+    updateProgressBar(int);
 };
-
-// Addmove to gameLogic when prompted by view. 
-// Slot for when player clickes button. 
-//  - Update the progress bar. 
-//  - If incorrect endGame. 
-//  - If bar = 100% roundEnd. 
-
-// When it's computer's turn. computerTurn(). 
-//  - Iterate over computer moves. 
-
-// Qtimer: set method to displayMove. DisplayMove emits a signal to the view. 
-// !iter.hasNext() -> QTimer.stop. 
-// computerTurnEnd(). 
-
 
 #endif // CONTROLLER_H

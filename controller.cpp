@@ -12,6 +12,12 @@ int Controller::getWaitTime(int currentWaitTime)
     return currentWaitTime += 200 + (OMPUTER_TURN_LENGTH / moves.size());
 }
 
+int Controller::incrementProgressBar()
+{
+    int index = static_cast<int>(std::distance(model.getMoves().begin(), moveIterator));
+    return (index / moveIterator.size()) * 100;
+}
+
 GameLogic::GameLogic(QObject *parent) : QObject(parent) {}
 
 void Controller::gameStart()
@@ -27,8 +33,8 @@ void Controller::playerClickedButton(int buttonValue)
     {
        gameEnd();
     }
-
-    // Update progress bar. 
+    // Update the progress bar.
+    emit updateProgressBar(incrementProgressBar()); // TODO: Connect to view.
 
     if(moveIterator == model.getMoves().end()) 
     {
@@ -44,12 +50,12 @@ void Controller::roundEnd()
     for(int move: moves)
     {
         waitTime = getWaitTime(moveTime);
-        QTimer::singleShot(); // Put llambda here.
+        QTimer::singleShot(); // TODO: Inform view of what button to light up.
     }
     moveIterator = model.getMoves().begin(); // Reset the iterator.
 }
 
 void Controller::gameEnd()
 {
-    
+    // TODO: Inform the view of gameEnd.
 }

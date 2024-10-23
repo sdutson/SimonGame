@@ -3,3 +3,6 @@
 
 # Ignore .user file
 *.pro.user
+
+# Ignore .xml file
+*.xml

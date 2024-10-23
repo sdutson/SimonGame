@@ -50,7 +50,7 @@ void Controller::roundEnd()
     for(int move: moves)
     {
         waitTime = getWaitTime(moveTime);
-        QTimer::singleShot(); // TODO: Inform view of what button to light up.
+        QTimer::singleShot(); // TODO: Inform view of what button to light up. Use llambda.
     }
     moveIterator = model.getMoves().begin(); // Reset the iterator.
 }

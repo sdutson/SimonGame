@@ -7,14 +7,17 @@ bool Controller::isValidMove(int buttonValue)
     return *moveIterator == buttonValue;
 }
 
-GameLogic::GameLogic(QObject *parent) : QObject(parent)
+int Controller::getWaitTime(int currentWaitTime)
 {
-    GameLogic model;
-    std::vector<int>::iterator moveIterator = model.getMoves().begin();
+    return currentWaitTime += 200 + (OMPUTER_TURN_LENGTH / moves.size());
 }
+
+GameLogic::GameLogic(QObject *parent) : QObject(parent) {}
 
 void Controller::gameStart()
 {
+    GameLogic model;
+    std::vector<int>::iterator moveIterator = model.getMoves().begin();
     roundEnd();
 }
 
@@ -37,12 +40,13 @@ void Controller::playerClickedButton(int buttonValue)
 void Controller::roundEnd()
 {
     model.addMove();
-    int moveTime = 0; // TODO: Adjust this?
+    int waitTime = 500;
     for(int move: moves)
     {
-        moveTime += COMPUTER_TURN_LENGTH / moves.size();
-        QTimer::singleShot() // Put llambda here.
+        waitTime = getWaitTime(moveTime);
+        QTimer::singleShot(); // Put llambda here.
     }
+    moveIterator = model.getMoves().begin(); // Reset the iterator.
 }
 
 void Controller::gameEnd()

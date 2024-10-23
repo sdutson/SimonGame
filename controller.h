@@ -7,6 +7,8 @@
 class Controller : public QObject
 {
     // TODO: Example code has Q_OBJECT here. Do we need it?
+    Q_OBJECT
+
     GameLogic model;
 
     std::vector<int>::iterator moveIterator;

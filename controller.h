@@ -25,8 +25,9 @@
 // public:
 //     explicit Controller(QObject *parent = nullptr);
 
-// public slots:
 //     void gameStart();
+
+// public slots:
 
 //     void redButtonPressed();
 

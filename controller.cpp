@@ -24,7 +24,7 @@ void Controller::gameStart()
 {
     GameLogic model;
     std::vector<int>::iterator moveIterator = model.getMoves().begin();
-    // roundEnd();
+    roundEnd();
 }
 
 void Controller::redButtonPressed()
@@ -39,19 +39,19 @@ void Controller::blueButtonPressed()
 
 void Controller::playerClickedButton(int buttonValue)
 {
-    // if(!isValidMove(buttonValue))
-    // {
-    //    emit gameEnd(); // End the game.
-    // }
+    if(!isValidMove(buttonValue))
+    {
+       emit gameEnd(); // End the game.
+    }
     // Update the progress bar.
-    emit updateProgressBar(100);
+
     // emit updateProgressBar(incrementProgressBar()); // TODO: Connect to view.
 
-    // if(moveIterator == model.getMoves().end())
-    // {
-    //     roundEnd();
-    // }
-    // moveIterator++;
+    if(moveIterator == model.getMoves().end())
+    {
+        roundEnd();
+    }
+    moveIterator++;
 }
 
 void Controller::roundEnd()
@@ -62,7 +62,7 @@ void Controller::roundEnd()
     for(int move: model.getMoves())
     {
         waitTime = getWaitTime(waitTime);
-        QTimer::singleShot(waitTime, this, [this]() {emit flashButton(move)});
+        QTimer::singleShot(waitTime, this, [this, move]() {emit flashButton(move);});
 
     }
     moveIterator = model.getMoves().begin(); // Reset the iterator.

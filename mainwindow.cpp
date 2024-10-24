@@ -31,6 +31,16 @@ void MainWindow::setBlueButtonColor()
     ui->blueButton->setStyleSheet( QString("QPushButton {background-color: rgb(50,50,139);} QPushButton:pressed {background-color: rgb(0 ,0 ,255);}"));
 }
 
+void MainWindow::buttonFlash(int buttonId)
+{
+    if (buttonId == 0)
+    {
+        redButtonFlash();
+        return;
+    }
+    blueButtonFlash();
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -43,17 +53,19 @@ void MainWindow::startButtonClicked()
     ui->blueButton->setEnabled(true);
 }
 
+void MainWindow::redButtonFlash() // TODO: Connect this.
+{
+    ui->redButton->setStyleSheet( QString("QPushButton {background-color: rgb(255,150,150);}"));
+    QTimer::singleShot(500, this, &MainWindow::setRedButtonColor);
+}
+
+
 void MainWindow::blueButtonFlash() // TODO: Connect this.
 {
     ui->blueButton->setStyleSheet( QString("QPushButton {background-color: rgb(255, 0, 0);}"));
     QTimer::singleShot(500, this, &MainWindow::setBlueButtonColor);
 }
 
-void MainWindow::redButtonFlash() // TODO: Connect this.
-{
-    ui->redButton->setStyleSheet( QString("QPushButton {background-color: rgb(255,150,150);}"));
-    QTimer::singleShot(500, this, &MainWindow::setRedButtonColor);
-}
 
 void MainWindow::gameOver()
 {

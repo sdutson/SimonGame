@@ -34,6 +34,8 @@ private:
     void setRedButtonColor();
 
     void setBlueButtonColor();
+
+    void buttonFlash(int buttonId);
 };
 #endif // MAINWINDOW_H
 

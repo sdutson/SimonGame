@@ -41,6 +41,8 @@ signals:
     void gameEnd();
 
     void flashButton(int buttonId);
+
+    void buttonEnabled(bool enabled);
 };
 
 #endif // CONTROLLER_H

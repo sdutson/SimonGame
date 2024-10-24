@@ -16,6 +16,7 @@ MainWindow::MainWindow(Controller& controller, QWidget *parent)
     connect(ui->blueButton, &QPushButton::clicked, &controller, &Controller::blueButtonPressed);
     connect(&controller, &Controller::updateProgressBar, ui->progressBar, &QProgressBar::setValue);
     connect(&controller, &Controller::flashButton, this, &MainWindow::buttonFlash);
+    connect(&controller, &Controller::buttonEnabled, this, &MainWindow::buttonEnabled);
 
     setRedButtonColor();
     setBlueButtonColor();
@@ -47,11 +48,15 @@ void MainWindow::buttonFlash(int buttonId)
     blueButtonFlash();
 }
 
+void buttonEnabled(bool enabled)
+{
+    ui->redButton->setEnabled(enabled);
+    ui->blueButton->setEnabled(enabled);
+}
+
 void MainWindow::startButtonClicked()
 {
     ui->startButton->setEnabled(false);
-    ui->redButton->setEnabled(true);
-    ui->blueButton->setEnabled(true);
 }
 
 void MainWindow::redButtonFlash()

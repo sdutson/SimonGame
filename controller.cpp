@@ -69,5 +69,8 @@ void Controller::roundEnd()
 
     }
     moveIterator = model.getMoves().begin(); // Reset the iterator.
+
+    // Enable buttons for player after all flashes are done
+    QTimer::singleShot(waitTime, this, [this]() {emit buttonEnabled(true);});
 }
 

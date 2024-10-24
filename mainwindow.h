@@ -36,6 +36,8 @@ private:
     void setBlueButtonColor();
 
     void buttonFlash(int buttonId);
+
+    void buttonEnabled(bool enabled);
 };
 #endif // MAINWINDOW_H
 

@@ -15,15 +15,15 @@ private:
 
     bool isValidMove(int buttonValue);
 
-//     int getWaitTime(int currentWaitTime);
+    int getWaitTime(int currentWaitTime);
 
-    int incrementProgressBar();
+    // int incrementProgressBar();
 
-//     void roundEnd();
+    void roundEnd();
 
     void playerClickedButton(int buttonValue);
 
-//     const int COMPUTER_TURN_LENGTH = 2000; // TODO: adjust this as needed.
+    const int COMPUTER_TURN_LENGTH = 2000; // TODO: adjust this as needed.
 
 public:
      explicit Controller(QObject *parent = nullptr);
@@ -36,9 +36,11 @@ public slots:
     void blueButtonPressed();
 
 signals:
-    void updateProgressBar(int);
+    void updateProgressBar(int newProgressValue);
 
     void gameEnd();
+
+    void flashButton(int buttonId);
 };
 
 #endif // CONTROLLER_H

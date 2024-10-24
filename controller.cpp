@@ -7,16 +7,16 @@ bool Controller::isValidMove(int buttonValue)
     return *moveIterator == buttonValue;
 }
 
-// int Controller::getWaitTime(int currentWaitTime)
-// {
-//     return currentWaitTime += 200 + (COMPUTER_TURN_LENGTH / moves.size());
-// }
-
-int Controller::incrementProgressBar()
+int Controller::getWaitTime(int currentWaitTime)
 {
-    int index = static_cast<int>(std::distance(model.getMoves().begin(), moveIterator));
-    // return (index / moveIterator.size()) * 100;
+    return currentWaitTime += 200 + (COMPUTER_TURN_LENGTH / model.getMoves().size());
 }
+
+// int Controller::incrementProgressBar()
+// {
+//     int index = static_cast<int>(std::distance(model.getMoves().begin(), moveIterator));
+//     return (index / moveIterator.size()) * 100;
+// }
 
 Controller::Controller(QObject *parent) : QObject(parent) {}
 
@@ -39,10 +39,10 @@ void Controller::blueButtonPressed()
 
 void Controller::playerClickedButton(int buttonValue)
 {
-    if(!isValidMove(buttonValue))
-    {
-       emit gameEnd(); // End the game.
-    }
+    // if(!isValidMove(buttonValue))
+    // {
+    //    emit gameEnd(); // End the game.
+    // }
     // Update the progress bar.
     emit updateProgressBar(100);
     // emit updateProgressBar(incrementProgressBar()); // TODO: Connect to view.
@@ -54,16 +54,17 @@ void Controller::playerClickedButton(int buttonValue)
     // moveIterator++;
 }
 
-// void Controller::roundEnd()
-// {
-//     emit updateProgressBar(0); // Clear the progress bar.
-//     model.addMove();
-//     int waitTime = 500;
-//     for(int move: moves)
-//     {
-//         waitTime = getWaitTime(moveTime);
-//         QTimer::singleShot(); // TODO: Inform view of what button to light up. Use llambda.
-//     }
-//     moveIterator = model.getMoves().begin(); // Reset the iterator.
-//}
+void Controller::roundEnd()
+{
+    emit updateProgressBar(0); // Clear the progress bar.
+    model.addMove();
+    int waitTime = 500;
+    for(int move: model.getMoves())
+    {
+        waitTime = getWaitTime(waitTime);
+        QTimer::singleShot(waitTime, this, [this]() {emit flashButton(move)});
+
+    }
+    moveIterator = model.getMoves().begin(); // Reset the iterator.
+}
 

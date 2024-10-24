@@ -17,7 +17,7 @@ MainWindow::MainWindow(Controller& controller, QWidget *parent)
 
     setRedButtonColor();
     setBlueButtonColor();
-    ui->loseMessage->setVisible(false); // TODO: Is there a way to make this the default?
+    ui->loseMessage->setVisible(false);
 }
 
 void MainWindow::setRedButtonColor()

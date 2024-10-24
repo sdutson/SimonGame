@@ -57,6 +57,7 @@ void MainWindow::buttonEnabled(bool enabled)
 void MainWindow::startButtonClicked()
 {
     ui->startButton->setEnabled(false);
+    ui->loseMessage->setVisible(false);
 }
 
 void MainWindow::redButtonFlash()

@@ -49,7 +49,7 @@ void Controller::playerClickedButton(int buttonValue)
 
     if(moveIterator == model.getMoves().end())
     {
-        emit buttonEnabled(true);
+        emit buttonEnabled(false);
         roundEnd();
     }
     moveIterator++;

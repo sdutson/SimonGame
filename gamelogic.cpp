@@ -12,6 +12,7 @@ GameLogic::GameLogic()
 void GameLogic::addMove()
 {
     const int numButtons = 2;
+    srand(time(NULL));
     int newMove = srand(time(0)) % numButtons;
     moves.push_back(newMove);
 }

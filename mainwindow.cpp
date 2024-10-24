@@ -48,7 +48,7 @@ void MainWindow::buttonFlash(int buttonId)
     blueButtonFlash();
 }
 
-void buttonEnabled(bool enabled)
+void MainWindow::buttonEnabled(bool enabled)
 {
     ui->redButton->setEnabled(enabled);
     ui->blueButton->setEnabled(enabled);
@@ -74,4 +74,6 @@ void MainWindow::blueButtonFlash()
 void MainWindow::gameOver()
 {
     ui->loseMessage->setVisible(true);
+    buttonEnabled(false);
+    ui->startButton->setEnabled(true);
 }

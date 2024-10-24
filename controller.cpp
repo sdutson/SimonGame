@@ -49,6 +49,7 @@ void Controller::playerClickedButton(int buttonValue)
 
     if(moveIterator == model.getMoves().end())
     {
+        emit buttonEnabled(true);
         roundEnd();
     }
     moveIterator++;
@@ -71,6 +72,6 @@ void Controller::roundEnd()
     moveIterator = model.getMoves().begin(); // Reset the iterator.
 
     // Enable buttons for player after all flashes are done
-    QTimer::singleShot(waitTime, this, [this]() {emit buttonEnabled(true);});
+    QTimer::singleShot(waitTime + 500, this, [this]() {emit buttonEnabled(true);});
 }
 

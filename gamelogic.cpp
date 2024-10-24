@@ -2,18 +2,19 @@
 #include <cstdlib>
 #include <vector>
 
+
 using std::rand;
 
 GameLogic::GameLogic()
 {
-    vector<int> moves;
+    std::srand(static_cast<unsigned int>(time(NULL)));
 }
 
 void GameLogic::addMove()
 {
     const int numButtons = 2;
-    srand(time(NULL));
-    int newMove = srand(time(0)) % numButtons;
+
+    int newMove = std::rand() % numButtons;
     moves.push_back(newMove);
 }
 

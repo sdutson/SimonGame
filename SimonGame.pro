@@ -15,6 +15,7 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    Color.h \
     controller.h \
     gamelogic.h \
     mainwindow.h

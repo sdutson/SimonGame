@@ -57,7 +57,10 @@ void Controller::playerClickedButton(int buttonValue)
 void Controller::roundEnd()
 {
     emit updateProgressBar(0); // Clear the progress bar.
-    model.addMove();
+    // for (int i = 0; i < 10; i++)
+    {
+        model.addMove();
+    }
     int waitTime = 500;
     for(int move: model.getMoves())
     {

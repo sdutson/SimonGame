@@ -15,10 +15,16 @@ MainWindow::MainWindow(Controller& controller, QWidget *parent)
     connect(ui->redButton, &QPushButton::clicked, &controller, &Controller::redButtonPressed);
     connect(ui->blueButton, &QPushButton::clicked, &controller, &Controller::blueButtonPressed);
     connect(&controller, &Controller::updateProgressBar, ui->progressBar, &QProgressBar::setValue);
+    connect(&controller, &Controller::flashButton, this, &MainWindow::buttonFlash);
 
     setRedButtonColor();
     setBlueButtonColor();
     ui->loseMessage->setVisible(false);
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
 }
 
 void MainWindow::setRedButtonColor()
@@ -41,11 +47,6 @@ void MainWindow::buttonFlash(int buttonId)
     blueButtonFlash();
 }
 
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
-
 void MainWindow::startButtonClicked()
 {
     ui->startButton->setEnabled(false);
@@ -53,19 +54,17 @@ void MainWindow::startButtonClicked()
     ui->blueButton->setEnabled(true);
 }
 
-void MainWindow::redButtonFlash() // TODO: Connect this.
+void MainWindow::redButtonFlash()
 {
     ui->redButton->setStyleSheet( QString("QPushButton {background-color: rgb(255,150,150);}"));
     QTimer::singleShot(500, this, &MainWindow::setRedButtonColor);
 }
 
-
-void MainWindow::blueButtonFlash() // TODO: Connect this.
+void MainWindow::blueButtonFlash()
 {
-    ui->blueButton->setStyleSheet( QString("QPushButton {background-color: rgb(255, 0, 0);}"));
+    ui->blueButton->setStyleSheet( QString("QPushButton {background-color: rgb(0 ,0 ,255);}"));
     QTimer::singleShot(500, this, &MainWindow::setBlueButtonColor);
 }
-
 
 void MainWindow::gameOver()
 {

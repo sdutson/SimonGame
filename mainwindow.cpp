@@ -14,6 +14,7 @@ MainWindow::MainWindow(Controller& controller, QWidget *parent)
     connect(&controller, &Controller::gameEnd, this, &MainWindow::gameOver);
     connect(ui->redButton, &QPushButton::clicked, &controller, &Controller::redButtonPressed);
     connect(ui->blueButton, &QPushButton::clicked, &controller, &Controller::blueButtonPressed);
+    connect(&controller, &Controller::updateProgressBar, ui->progressBar, &QProgressBar::setValue);
 
     setRedButtonColor();
     setBlueButtonColor();

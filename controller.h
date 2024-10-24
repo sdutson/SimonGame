@@ -17,7 +17,7 @@ private:
 
 //     int getWaitTime(int currentWaitTime);
 
-//     int incrementProgressBar();
+    int incrementProgressBar();
 
 //     void roundEnd();
 
@@ -36,7 +36,7 @@ public slots:
     void blueButtonPressed();
 
 signals:
-//     void updateProgressBar(int);
+    void updateProgressBar(int);
 
     void gameEnd();
 };

@@ -12,11 +12,11 @@ bool Controller::isValidMove(int buttonValue)
 //     return currentWaitTime += 200 + (COMPUTER_TURN_LENGTH / moves.size());
 // }
 
-// int Controller::incrementProgressBar()
-// {
-//     int index = static_cast<int>(std::distance(model.getMoves().begin(), moveIterator));
-//     return (index / moveIterator.size()) * 100;
-// }
+int Controller::incrementProgressBar()
+{
+    int index = static_cast<int>(std::distance(model.getMoves().begin(), moveIterator));
+    // return (index / moveIterator.size()) * 100;
+}
 
 Controller::Controller(QObject *parent) : QObject(parent) {}
 
@@ -39,11 +39,12 @@ void Controller::blueButtonPressed()
 
 void Controller::playerClickedButton(int buttonValue)
 {
-    // if(!isValidMove(buttonValue))
-    // {
-    //    emit gameEnd(); // End the game.
-    // }
+    if(!isValidMove(buttonValue))
+    {
+       emit gameEnd(); // End the game.
+    }
     // Update the progress bar.
+    emit updateProgressBar(100);
     // emit updateProgressBar(incrementProgressBar()); // TODO: Connect to view.
 
     // if(moveIterator == model.getMoves().end())

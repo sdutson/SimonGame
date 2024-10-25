@@ -16,7 +16,7 @@ int Controller::incrementProgressBar()
 {
     int index = static_cast<int>(std::distance(model.getMoves().begin(), moveIterator));
     int size = static_cast<int>(model.getMoves().size());
-    return (index / size) * 100;
+    return (index * 100) / size;
 }
 
 Controller::Controller(QObject *parent) : QObject(parent) {}
@@ -60,7 +60,6 @@ void Controller::playerClickedButton(int buttonValue)
 
 void Controller::roundEnd()
 {
-    emit updateProgressBar(0); // Clear the progress bar.
     model.addMove();
     int waitTime = 500;
     for(int move: model.getMoves())

@@ -50,6 +50,10 @@ void MainWindow::buttonFlash(int buttonId)
 
 void MainWindow::buttonEnabled(bool enabled)
 {
+    if(enabled)
+    {
+        ui->progressBar->setValue(0);
+    }
     ui->redButton->setEnabled(enabled);
     ui->blueButton->setEnabled(enabled);
 }

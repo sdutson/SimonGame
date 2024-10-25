@@ -17,13 +17,13 @@ private:
 
     int getWaitTime(int currentWaitTime);
 
-    // int incrementProgressBar();
+    int incrementProgressBar();
 
     void roundEnd();
 
     void playerClickedButton(int buttonValue);
 
-    const int COMPUTER_TURN_LENGTH = 2000; // TODO: adjust this as needed.
+    const int COMPUTER_TURN_LENGTH = 1000; // TODO: adjust this as needed.
 
 public:
      explicit Controller(QObject *parent = nullptr);

@@ -3,7 +3,8 @@
 
 #include "gamelogic.h"
 #include <QObject>
-
+/// @author - Samuel Dutson & Alexander Kuettel 
+/// Assign 06
 // TODO: Comment this. And change it's name to model?
 class Controller : public QObject
 {

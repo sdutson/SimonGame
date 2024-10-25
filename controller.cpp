@@ -1,6 +1,8 @@
 #include "controller.h"
 #include "gamelogic.h"
 #include <QTimer>
+/// @author - Samuel Dutson & Alexander Kuettel 
+/// Assign 06
 
 bool Controller::isValidMove(int buttonValue)
 {

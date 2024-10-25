@@ -1,8 +1,8 @@
 #include "gamelogic.h"
 #include <cstdlib>
 #include <vector>
-
-
+/// @author - Samuel Dutson & Alexander Kuettel 
+/// Assign 06
 using std::rand;
 
 GameLogic::GameLogic()
@@ -12,9 +12,7 @@ GameLogic::GameLogic()
 
 void GameLogic::addMove()
 {
-    const int numButtons = 2;
-
-    int newMove = std::rand() % numButtons;
+    int newMove = std::rand() % 2;
     moves.push_back(newMove);
 }
 

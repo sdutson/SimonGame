@@ -3,6 +3,8 @@
 #include "controller.h"
 #include <QTimer>
 
+/// @author - Samuel Dutson & Alexander Kuettel
+/// Assign 06
 MainWindow::MainWindow(Controller& controller, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)

@@ -67,13 +67,13 @@ void MainWindow::startButtonClicked()
 void MainWindow::redButtonFlash()
 {
     ui->redButton->setStyleSheet( QString("QPushButton {background-color: rgb(255, 150, 150);}"));
-    QTimer::singleShot(500, this, &MainWindow::setRedButtonColor);
+    QTimer::singleShot(500, Qt::PreciseTimer, this, &MainWindow::setRedButtonColor);
 }
 
 void MainWindow::blueButtonFlash()
 {
     ui->blueButton->setStyleSheet( QString("QPushButton {background-color: rgb(150, 150, 255);}"));
-    QTimer::singleShot(500, this, &MainWindow::setBlueButtonColor);
+    QTimer::singleShot(500, Qt::PreciseTimer, this, &MainWindow::setBlueButtonColor);
 }
 
 void MainWindow::gameOver()

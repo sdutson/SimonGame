@@ -43,7 +43,8 @@ void Controller::playerClickedButton(int buttonValue)
     if(!isValidMove(buttonValue))
     {
         model.getMoves().clear();
-        emit gameEnd(); // End the game.
+        emit updateProgressBar(0);
+        emit gameEnd();
         return;
     }
     moveIterator++;
@@ -65,11 +66,11 @@ void Controller::roundEnd()
     for(int move: model.getMoves())
     {
         waitTime = getWaitTime(waitTime);
-        QTimer::singleShot(waitTime, this, [this, move]() {emit flashButton(move);});
+        QTimer::singleShot(waitTime, Qt::PreciseTimer, this, [this, move]() {emit flashButton(move);});
 
     }
     moveIterator = model.getMoves().begin(); // Reset the iterator.
     // Enable buttons for player after all flashes are done
-    QTimer::singleShot(waitTime + 500, this, [this]() {emit buttonEnabled(true);});
+    QTimer::singleShot(waitTime + 500, Qt::PreciseTimer, this, [this]() {emit buttonEnabled(true);});
 }
 

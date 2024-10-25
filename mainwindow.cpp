@@ -30,12 +30,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::setRedButtonColor()
 {
-    ui->redButton->setStyleSheet( QString("QPushButton {background-color: rgb(200,50,50);} QPushButton:pressed {background-color: rgb(255,150,150);}"));
+    ui->redButton->setStyleSheet( QString("QPushButton {background-color: rgb(200,50,50);} QPushButton:pressed {background-color: rgb(255, 150, 150);}"));
 }
 
 void MainWindow::setBlueButtonColor()
 {
-    ui->blueButton->setStyleSheet( QString("QPushButton {background-color: rgb(50,50,139);} QPushButton:pressed {background-color: rgb(0 ,0 ,255);}"));
+    ui->blueButton->setStyleSheet( QString("QPushButton {background-color: rgb(50,50,139);} QPushButton:pressed {background-color: rgb(150, 150, 255);}"));
 }
 
 void MainWindow::buttonFlash(int buttonId)
@@ -62,13 +62,13 @@ void MainWindow::startButtonClicked()
 
 void MainWindow::redButtonFlash()
 {
-    ui->redButton->setStyleSheet( QString("QPushButton {background-color: rgb(255,150,150);}"));
+    ui->redButton->setStyleSheet( QString("QPushButton {background-color: rgb(255, 150, 150);}"));
     QTimer::singleShot(500, this, &MainWindow::setRedButtonColor);
 }
 
 void MainWindow::blueButtonFlash()
 {
-    ui->blueButton->setStyleSheet( QString("QPushButton {background-color: rgb(0 ,0 ,255);}"));
+    ui->blueButton->setStyleSheet( QString("QPushButton {background-color: rgb(150, 150, 255);}"));
     QTimer::singleShot(500, this, &MainWindow::setBlueButtonColor);
 }
 

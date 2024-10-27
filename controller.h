@@ -37,6 +37,9 @@ private:
     /// @param buttonValue - The ID of the button that was pressed. 
     void playerClickedButton(int buttonValue);
 
+    /// @brief - Prompts the view to display the computer's moves.
+    void displayMoves();
+
     const int COMPUTER_TURN_LENGTH = 1000; // Constant used to ensure computer moves speed up at game progresses. 
 
 public:
@@ -54,6 +57,9 @@ public slots:
     /// @brief - Slot for when the user presses the blueButton. Makes use of the playerClickedButton helper method. 
     void blueButtonPressed();
 
+    /// @brief - Restarts the current turn.
+    void restartTurnButtonPressed();
+
 signals:
     /// @brief - This signal informs the view that it needs to update the progress bar. 
     /// @param newProgressValue - The new value for the progress bar.
@@ -69,6 +75,10 @@ signals:
     /// @brief - This signal informs the view that it needs to update the enables status of the color buttons. 
     /// @param enabled - What the buttons enables status should be set to. 
     void buttonEnabled(bool enabled);
+
+    /// @brief - Informs the view the user has used the restart turn button and that it should noe be disabled.
+    /// @param used - What the enabled status of the button should be set to(in this case, always false.)
+    void restartTurnUsed(bool used = false);
 };
 
 #endif // CONTROLLER_H

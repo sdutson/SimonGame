@@ -42,14 +42,16 @@ void MainWindow::setBlueButtonColor()
     ui->blueButton->setStyleSheet( QString("QPushButton {background-color: rgb(50,50,139);} QPushButton:pressed {background-color: rgb(150, 150, 255);}"));
 }
 
-void MainWindow::buttonFlash(int buttonId)
+void MainWindow::buttonFlash(Color buttonId)
 {
-    if (buttonId == 0)
+    if (buttonId == Color::RED)
     {
         redButtonFlash();
-        return;
     }
-    blueButtonFlash();
+    else
+    {
+        blueButtonFlash();
+    }
 }
 
 void MainWindow::buttonEnabled(bool enabled)

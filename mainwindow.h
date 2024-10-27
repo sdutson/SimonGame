@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "model.h"
+#include "Color.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -31,7 +32,7 @@ private slots:
 
     /// @brief - Slot for when the model prompts the view to flash a button. 
     /// @param buttonId - The id of the button to flash. 
-    void buttonFlash(int buttonId);
+    void buttonFlash(Color buttonId);
 
     /// @brief - Slot for when the model prompts the view to end the game. 
     void gameOver();

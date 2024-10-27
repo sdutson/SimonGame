@@ -2,7 +2,9 @@
 #define MODEL_H
 
 #include "gamelogic.h"
+#include "Color.h"
 #include <QObject>
+
 /// @author - Samuel Dutson & Alexander Kuettel 
 /// Assign 06
 // TODO: Comment this. And change it's name to model?
@@ -13,12 +15,12 @@ class Model : public QObject
 private:
     GameLogic gameLogic;
 
-    std::vector<int>::iterator moveIterator;
+    std::vector<Color>::iterator moveIterator;
 
     /// @brief - This method checks if the given move is valid. 
     /// @param buttonValue - The move taken by the user. 
     /// @return - If the provided matches the move taken by the computer. 
-    bool isValidMove(int buttonValue);
+    bool isValidMove(Color buttonValue);
 
     /// @brief - This method calculates a wait time for a timer based off of the current position of moveIterator.
     /// @param currentWaitTime - The current wait time. 
@@ -35,7 +37,7 @@ private:
 
     /// @brief - Helper method for when the user presses a color button. This method checks the move's correctness and acts accordingly.  
     /// @param buttonValue - The ID of the button that was pressed. 
-    void playerClickedButton(int buttonValue);
+    void playerClickedButton(Color buttonValue);
 
     /// @brief - Prompts the view to display the computer's moves.
     void displayMoves();
@@ -70,7 +72,7 @@ signals:
 
     /// @brief - This signal informs the view that it needs to 'flash' the specified button. 
     /// @param buttonId - The ID of the button to flash. 
-    void flashButton(int buttonId);
+    void flashButton(Color buttonId);
 
     /// @brief - This signal informs the view that it needs to update the enables status of the color buttons. 
     /// @param enabled - What the buttons enables status should be set to. 

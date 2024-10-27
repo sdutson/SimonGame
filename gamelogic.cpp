@@ -1,4 +1,5 @@
 #include "gamelogic.h"
+#include "Color.h"
 #include <cstdlib>
 #include <vector>
 
@@ -13,11 +14,12 @@ GameLogic::GameLogic()
 
 void GameLogic::addMove()
 {
-    int newMove = std::rand() % 2;
+    int moveID = std::rand() % 2;
+    Color newMove = static_cast<Color>(moveID);
     moves.push_back(newMove);
 }
 
-vector<int> &GameLogic::getMoves()
+vector<Color> &GameLogic::getMoves()
 {
     return moves;
 }

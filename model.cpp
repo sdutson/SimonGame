@@ -4,7 +4,7 @@
 
 /// @author - Samuel Dutson & Alexander Kuettel 
 /// Assign 06
-bool Model::isValidMove(int buttonValue)
+bool Model::isValidMove(Color buttonValue)
 {
     return *moveIterator == buttonValue;
 }
@@ -26,27 +26,26 @@ Model::Model(QObject *parent) : QObject(parent) {}
 void Model::gameStart()
 {
     GameLogic gameLogic;
-    std::vector<int>::iterator moveIterator = gameLogic.getMoves().begin();
+    std::vector<Color>::iterator moveIterator = gameLogic.getMoves().begin();
     roundEnd();
 }
 
 void Model::redButtonPressed()
 {
-    playerClickedButton(0);
+    playerClickedButton(Color::RED);
 }
 
 void Model::blueButtonPressed()
 {
-    playerClickedButton(1);
+    playerClickedButton(Color::BLUE);
 }
 
-void Model::playerClickedButton(int buttonValue)
+void Model::playerClickedButton(Color buttonValue)
 {
     if(!isValidMove(buttonValue))
     {
         // If player lost, inform the view and reset needed elements. 
-        gameLogic.
-getMoves().clear();
+        gameLogic.getMoves().clear();
         emit updateProgressBar(0);
         emit gameEnd();
         return;
@@ -73,7 +72,7 @@ void Model::roundEnd()
 void Model::displayMoves()
 {
     int waitTime = 500;
-    for(int move: gameLogic.getMoves())
+    for(Color move: gameLogic.getMoves())
     {
         // Set timers to flash for each move.
         waitTime = getWaitTime(waitTime);

@@ -1,6 +1,7 @@
 #ifndef GAMELOGIC_H
 #define GAMELOGIC_H
 
+#include "Color.h"
 #include <vector>
 using std::vector;
 
@@ -9,7 +10,7 @@ using std::vector;
 /// Assign 06
 class GameLogic
 {
-    vector<int> moves; // A vector storing all of the computer's moves. 
+    vector<Color> moves; // A vector storing all of the computer's moves.
 
 public:
     /// @brief - Constructor for a new GameLogic object.
@@ -20,7 +21,7 @@ public:
 
     /// @brief - Get the computer's moves. 
     /// @return - The vector storing the computer's moves. 
-    vector<int>& getMoves();
+    vector<Color>& getMoves();
 };
 
 #endif // GAMELOGIC_H

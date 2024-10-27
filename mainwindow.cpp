@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "model.h"
+#include "Color.h"
 #include <QTimer>
 
 /// @author - Samuel Dutson & Alexander Kuettel

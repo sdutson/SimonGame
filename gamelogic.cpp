@@ -1,9 +1,10 @@
 #include "gamelogic.h"
 #include <cstdlib>
 #include <vector>
-/// @author - Samuel Dutson & Alexander Kuettel 
-/// Assign 06
+
 using std::rand;
+/// @author - Samuel Dutson & Alexander Kuettel
+/// Assign 06
 
 GameLogic::GameLogic()
 {

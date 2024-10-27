@@ -1,9 +1,9 @@
 #include "gamelogic.h"
 #include "model.h"
 #include <QTimer>
+
 /// @author - Samuel Dutson & Alexander Kuettel 
 /// Assign 06
-
 bool Model::isValidMove(int buttonValue)
 {
     return *moveIterator == buttonValue;

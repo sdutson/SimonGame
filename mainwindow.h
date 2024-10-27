@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "controller.h"
+#include "model.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,9 +19,9 @@ class MainWindow : public QMainWindow
 
 public:
     /// @brief - Constructor for a new MainWindow.
-    /// @param controller - The controller/model for the game. 
+    /// @param model - The model for the game. 
     /// @param parent - Not used.  
-    MainWindow(Controller& controller, QWidget *parent = nullptr);
+    MainWindow(Model& model, QWidget *parent = nullptr);
     ~MainWindow();
 
 

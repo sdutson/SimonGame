@@ -1,17 +1,17 @@
-#ifndef CONTROLLER_H
-#define CONTROLLER_H
+#ifndef MODEL_H
+#define MODEL_H
 
 #include "gamelogic.h"
 #include <QObject>
 /// @author - Samuel Dutson & Alexander Kuettel 
 /// Assign 06
 // TODO: Comment this. And change it's name to model?
-class Controller : public QObject
+class Model : public QObject
 {
     Q_OBJECT
 
 private:
-    GameLogic model;  // TODO: Rename this?
+    GameLogic gameLogic;
 
     std::vector<int>::iterator moveIterator;
 
@@ -43,9 +43,9 @@ private:
     const int COMPUTER_TURN_LENGTH = 1000; // Constant used to ensure computer moves speed up at game progresses. 
 
 public:
-     /// @brief - Constructor for a new Controller. 
+     /// @brief - Constructor for a new Model. 
      /// @param parent - Not used.
-     explicit Controller(QObject *parent = nullptr);
+     explicit Model(QObject *parent = nullptr);
 
 public slots:
     /// @brief - Slot for when the user starts a new game. Initializes all needed values and starts game. 
@@ -81,4 +81,4 @@ signals:
     void restartTurnUsed(bool used = false);
 };
 
-#endif // CONTROLLER_H
+#endif // MODEL_H

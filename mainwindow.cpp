@@ -1,26 +1,26 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "controller.h"
+#include "model.h"
 #include <QTimer>
 
 /// @author - Samuel Dutson & Alexander Kuettel
 /// Assign 06
-MainWindow::MainWindow(Controller& controller, QWidget *parent)
+MainWindow::MainWindow(Model& model, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
     connect(ui->startButton, &QPushButton::clicked, this, &MainWindow::startButtonClicked);
-    connect(ui->startButton, &QPushButton::clicked, &controller, &Controller::gameStart);
-    connect(&controller, &Controller::gameEnd, this, &MainWindow::gameOver);
-    connect(ui->redButton, &QPushButton::clicked, &controller, &Controller::redButtonPressed);
-    connect(ui->blueButton, &QPushButton::clicked, &controller, &Controller::blueButtonPressed);
-    connect(&controller, &Controller::updateProgressBar, ui->progressBar, &QProgressBar::setValue);
-    connect(&controller, &Controller::flashButton, this, &MainWindow::buttonFlash);
-    connect(&controller, &Controller::buttonEnabled, this, &MainWindow::buttonEnabled);
-    connect(ui->reshowFlashes, &QPushButton::clicked, &controller, &Controller::restartTurnButtonPressed);
-    connect(&controller, &Controller::restartTurnUsed, ui->reshowFlashes, &QPushButton::setEnabled);
+    connect(ui->startButton, &QPushButton::clicked, &model, &Model::gameStart);
+    connect(&model, &Model::gameEnd, this, &MainWindow::gameOver);
+    connect(ui->redButton, &QPushButton::clicked, &model, &Model::redButtonPressed);
+    connect(ui->blueButton, &QPushButton::clicked, &model, &Model::blueButtonPressed);
+    connect(&model, &Model::updateProgressBar, ui->progressBar, &QProgressBar::setValue);
+    connect(&model, &Model::flashButton, this, &MainWindow::buttonFlash);
+    connect(&model, &Model::buttonEnabled, this, &MainWindow::buttonEnabled);
+    connect(ui->reshowFlashes, &QPushButton::clicked, &model, &Model::restartTurnButtonPressed);
+    connect(&model, &Model::restartTurnUsed, ui->reshowFlashes, &QPushButton::setEnabled);
 
     setRedButtonColor();
     setBlueButtonColor();

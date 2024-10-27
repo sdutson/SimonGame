@@ -1,51 +1,52 @@
-#include "controller.h"
 #include "gamelogic.h"
+#include "model.h"
 #include <QTimer>
 /// @author - Samuel Dutson & Alexander Kuettel 
 /// Assign 06
 
-bool Controller::isValidMove(int buttonValue)
+bool Model::isValidMove(int buttonValue)
 {
     return *moveIterator == buttonValue;
 }
 
-int Controller::getWaitTime(int currentWaitTime)
+int Model::getWaitTime(int currentWaitTime)
 {
-    return currentWaitTime += 500 + (COMPUTER_TURN_LENGTH / model.getMoves().size());
+    return currentWaitTime += 500 + (COMPUTER_TURN_LENGTH / gameLogic.getMoves().size());
 }
 
-int Controller::incrementProgressBar()
+int Model::incrementProgressBar()
 {
-    int index = static_cast<int>(std::distance(model.getMoves().begin(), moveIterator));
-    int size = static_cast<int>(model.getMoves().size());
+    int index = static_cast<int>(std::distance(gameLogic.getMoves().begin(), moveIterator));
+    int size = static_cast<int>(gameLogic.getMoves().size());
     return (index * 100) / size;
 }
 
-Controller::Controller(QObject *parent) : QObject(parent) {}
+Model::Model(QObject *parent) : QObject(parent) {}
 
-void Controller::gameStart()
+void Model::gameStart()
 {
-    GameLogic model;
-    std::vector<int>::iterator moveIterator = model.getMoves().begin();
+    GameLogic gameLogic;
+    std::vector<int>::iterator moveIterator = gameLogic.getMoves().begin();
     roundEnd();
 }
 
-void Controller::redButtonPressed()
+void Model::redButtonPressed()
 {
     playerClickedButton(0);
 }
 
-void Controller::blueButtonPressed()
+void Model::blueButtonPressed()
 {
     playerClickedButton(1);
 }
 
-void Controller::playerClickedButton(int buttonValue)
+void Model::playerClickedButton(int buttonValue)
 {
     if(!isValidMove(buttonValue))
     {
         // If player lost, inform the view and reset needed elements. 
-        model.getMoves().clear();
+        gameLogic.
+getMoves().clear();
         emit updateProgressBar(0);
         emit gameEnd();
         return;
@@ -55,24 +56,24 @@ void Controller::playerClickedButton(int buttonValue)
     emit updateProgressBar(incrementProgressBar());
 
     // Check if the player's turn is over. 
-    if(moveIterator == model.getMoves().end())
+    if(moveIterator == gameLogic.getMoves().end())
     {
         emit buttonEnabled(false);
         roundEnd();
     }
 }
 
-void Controller::roundEnd()
+void Model::roundEnd()
 {
-    model.addMove();
+    gameLogic.addMove();
     displayMoves();
-    moveIterator = model.getMoves().begin(); // Reset the iterator.
+    moveIterator = gameLogic.getMoves().begin(); // Reset the iterator.
 }
 
-void Controller::displayMoves()
+void Model::displayMoves()
 {
     int waitTime = 500;
-    for(int move: model.getMoves())
+    for(int move: gameLogic.getMoves())
     {
         // Set timers to flash for each move.
         waitTime = getWaitTime(waitTime);
@@ -82,11 +83,11 @@ void Controller::displayMoves()
     QTimer::singleShot(waitTime + 500, Qt::PreciseTimer, this, [this]() {emit buttonEnabled(true);});
 }
 
-void Controller::restartTurnButtonPressed()
+void Model::restartTurnButtonPressed()
 {
     emit buttonEnabled(false); // Disable the color buttons.
     emit restartTurnUsed();
     displayMoves();
-    moveIterator = model.getMoves().begin(); // Reset the iterator.
+    moveIterator = gameLogic.getMoves().begin(); // Reset the iterator.
 }
 

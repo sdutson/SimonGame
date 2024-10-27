@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <iostream>
-// TODO: Move some things from the controller into here?
 using std::vector;
 /// @brief - This class represents the game logic backing the model for the game. 
 /// @author - Samuel Dutson & Alexander Kuettel 

@@ -5,7 +5,10 @@
 #include <QTimer>
 
 /// @author - Samuel Dutson & Alexander Kuettel
+/// Github authors: sdutson and alexanderkuettel
+/// Github link: https://github.com/University-of-Utah-CS3505/a6-simon-f24-alexanderkuettel
 /// Assign 06
+/// Creative Element: For our creative element we added a button that allowed the player to reset the round(Once per game).
 MainWindow::MainWindow(Model& model, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
